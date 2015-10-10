@@ -20,10 +20,12 @@ class loader {
     private addOption(keys: Array<string>) {
         var xSelect = d3.select('select#xSelect');
         var xOptions = xSelect.selectAll('option').data(keys);
-        xOptions.enter().append('option').text( (d:string) => d );
+        xOptions.enter().append('option').text( (d:string) => d )
+            .property('selected', (_,i:number) => i==0); // set default value to the first key
         var ySelect = d3.select('select#ySelect');
         var yOptions = ySelect.selectAll('option').data(keys);
-        yOptions.enter().append('option').text( (d:string) => d );
+        yOptions.enter().append('option').text( (d:string) => d )
+            .property('selected', (_,i:number) => i==1); // set default value to the second key
         
         var getSelected = (select: d3.Selection<any>) => {
             var selNode = select.node();
