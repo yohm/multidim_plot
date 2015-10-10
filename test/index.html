@@ -12,10 +12,7 @@
     <script src="../bower_components/d3/d3.min.js"></script>
     <script src="../dist/charting.js"></script>
     <script>
-      var chart = new charting.chart('#test');
-      d3.json('/test/test.json', function(error, data) {
-        chart.update(data);
-      });
+      var loader = new loader('#test');
     </script>
   </body>
 </html>
