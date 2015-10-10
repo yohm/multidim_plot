@@ -46,7 +46,6 @@ module charting {
 			var minX = d3.min(data, (d:dataPoint)=>d.x );
 			var maxX = d3.max(data, (d:dataPoint)=>d.x );
 			var xScale = this._xAxis.update(minX, maxX);
-			console.log(minX,maxX);
 			
 			var minY = d3.min(data, (d:dataPoint)=>d.y );
 			var maxY = d3.max(data, (d:dataPoint)=>d.y );

@@ -30,6 +30,7 @@ module charting{
 		
 		update(minX: number, maxX: number): d3.scale.Linear<number,number> {
 			this._scale.domain([minX, maxX]);
+			this._scale.nice();
 			this._group.call(this._axis);
 			return this._scale;
 		}

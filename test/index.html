@@ -13,7 +13,6 @@
     <script>
       var chart = new charting.chart('#test');
       d3.json('/test/test.json', function(error, data) {
-        console.log(data);
         chart.update(data);
       });
     </script>
