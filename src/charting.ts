@@ -6,19 +6,40 @@ module charting {
 		
 		constructor(container: any) {
 			this.init(container);
+			this.draw();
 		}
 		
 		private init(container) {
 			this._group = d3.select(container).append('g');
 		}
 		
-		public draw() {
+		private draw() {
+			this.drawXAxis();
+			this.drawYAxis();
+		}
+		
+		private drawXAxis() {
 			var scale = d3.scale.linear();
 			scale.domain([0,1]);
-			scale.range([0,800]);
+			scale.range([0,600]);
 			var axis = d3.svg.axis();
-			axis.scale(scale);
-			this._group.call(axis);
+			axis.scale(scale)
+			  .orient('bottom');
+			this._group.append('g').call(axis);
+		}
+		
+		private drawYAxis() {
+			var scale = d3.scale.linear();
+			scale.domain([0,1]);
+			scale.range([800,0]);
+			var axis = d3.svg.axis()
+			  .scale(scale)
+			  .orient('left');
+		    this._group.append('g')
+			  .call(axis)
+			  .attr({
+				  'transform': 'translate(30 0)'
+			  });
 		}
 	}
 }
