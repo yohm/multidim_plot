@@ -1,14 +1,15 @@
 /// <reference path="../typings/d3/d3.d.ts"/>
+/// <reference path="./ClickableScatterPlot.ts"/>
 /// <reference path="./charting.ts"/>
 /// <reference path="./dataPoint.d.ts"/>
 
 class loader {
     
-    private _chart: charting.ScatterPlot;
+    private _chart: charting.ClickableScatterPlot;
     private _data: Array<Object>;
     
     constructor(container: any) {
-        this._chart = new charting.ScatterPlot('#test');
+        this._chart = new charting.ClickableScatterPlot('#test');
         d3.json('/test/test.json', (error:any, data: Array<Object>) => {
             this._data = data;
             var keys: Array<string> = Object.keys( data[0] );
