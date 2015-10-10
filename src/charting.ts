@@ -64,6 +64,26 @@ module charting {
 				'cy': (d: dataPoint,i:number) => yScale(d.y)
 			});
 			dataSelection.exit().remove();
+			this.setTooltip(dataSelection);
+		}
+		
+		private setTooltip(points: d3.Selection<any>) {
+			var tooltip = d3.select('span#tooltip');
+			points
+				.on("mouseover", function(d:dataPoint) {
+					d3.select(this).style("opacity",1);
+					var t: string = `x: ${d.x}, y: ${d.y}`;
+					tooltip.style("visibility","visible").text(t);
+				})
+				.on("mousemove", function(d:dataPoint) {
+					tooltip
+						.style("top", (d3.event.pageY-20)+"px")
+						.style("left", (d3.event.pageX+10)+"px");
+				})
+				.on("mouseout", function(d:dataPoint) {
+					d3.select(this).style("opacity", .8);
+					tooltip.style("visibility", "hidden");
+				});
 		}
 	}
 }
