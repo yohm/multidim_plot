@@ -11,5 +11,14 @@ module charting {
 		private init(container) {
 			this._group = d3.select(container).append('g');
 		}
+		
+		public draw() {
+			var scale = d3.scale.linear();
+			scale.domain([0,1]);
+			scale.range([0,800]);
+			var axis = d3.svg.axis();
+			axis.scale(scale);
+			this._group.call(axis);
+		}
 	}
 }
