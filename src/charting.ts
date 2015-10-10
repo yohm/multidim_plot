@@ -7,6 +7,7 @@ module charting {
 	export class chart {
 		private _group: d3.Selection<any>;
 		private _paddingLeft = 50;
+		private _paddingRight = 30;
 		private _paddingBottom = 30;
 		private _paddingTop = 30;
 		
@@ -30,7 +31,7 @@ module charting {
 			    })
 			    .append('g');
 			
-			this._xAxis = new xAxis(this._group, width - this._paddingLeft);
+			this._xAxis = new xAxis(this._group, width - this._paddingLeft - this._paddingRight);
 			this._xAxis.translate( this._paddingLeft, height - this._paddingBottom);
 			this._yAxis = new yAxis(this._group, height - this._paddingBottom - this._paddingTop);
 			this._yAxis.translate( this._paddingLeft, this._paddingTop);
