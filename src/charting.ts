@@ -43,7 +43,7 @@ module charting {
 				});
 		}
 		
-		public update<T>(data: Array<T>, dataToPoint: (d:T)=>dataPoint) {
+		public update<T>(data: Array<T>, dataToPoint: (d:T)=>dataPoint): d3.Selection<any> {
 			var minX = d3.min(data, (d:T)=>dataToPoint(d).x );
 			var maxX = d3.max(data, (d:T)=>dataToPoint(d).x );
 			var xScale = this._xAxis.update(minX, maxX);
@@ -66,6 +66,7 @@ module charting {
 				});
 			dataSelection.exit().remove();
 			this.setTooltip(dataSelection);
+			return dataSelection;
 		}
 		
 		private setTooltip(points: d3.Selection<any>) {
