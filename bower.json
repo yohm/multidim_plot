@@ -1,0 +1,23 @@
+{
+  "name": "multidim_plot",
+  "version": "0.0.0",
+  "homepage": "https://github.com/yohm/multidim_plot",
+  "authors": [
+    "Yohsuke Murase <yohsuke.murase@gmail.com>"
+  ],
+  "description": "",
+  "main": "main.js",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.6"
+  }
+}
