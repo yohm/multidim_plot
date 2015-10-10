@@ -57,10 +57,10 @@ module charting {
 				.data(data);
 			dataSelection.enter()
 				.append('circle')
-				.classed('dat', true);
+				.classed('dat', true)
+				.attr({'r': 4});
 			dataSelection.transition().delay(50).duration(700)
 				.attr({
-					'r': 4,
 					'cx': (d:T,i:number) => xScale( dataToPoint(d).x ),
 					'cy': (d:T,i:number) => yScale( dataToPoint(d).y )
 				});
