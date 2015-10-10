@@ -7,8 +7,10 @@
   <body>
     <svg width="800" height="600" id="test">
     </svg>
-    <a href="../bower_components/d3/d3.min.js">d3.min.js</a>
-    <a href="../dist/charting.js">charting.js</a>
-    Hello world
+    <script src="../bower_components/d3/d3.min.js"></script>
+    <script src="../dist/charting.js"></script>
+    <script>
+      var chart = new charting.chart('#test');
+    </script>
   </body>
 </html>
