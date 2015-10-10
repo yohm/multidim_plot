@@ -4,7 +4,7 @@
 /// <reference path="./yAxis.ts"/>
 
 module charting {
-	export class chart {
+	export class ScatterPlot {
 		private _group: d3.Selection<any>;
 		private _paddingLeft = 50;
 		private _paddingRight = 30;

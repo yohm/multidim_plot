@@ -4,11 +4,11 @@
 
 class loader {
     
-    private _chart: charting.chart;
+    private _chart: charting.ScatterPlot;
     private _data: Array<Object>;
     
     constructor(container: any) {
-        this._chart = new charting.chart('#test');
+        this._chart = new charting.ScatterPlot('#test');
         d3.json('/test/test.json', (error:any, data: Array<Object>) => {
             this._data = data;
             var keys: Array<string> = Object.keys( data[0] );
