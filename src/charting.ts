@@ -58,11 +58,12 @@ module charting {
 			dataSelection.enter()
 				.append('circle')
 				.classed('dat', true);
-			dataSelection.attr({
-				'r': 4,
-				'cx': (d:T,i:number) => xScale( dataToPoint(d).x ),
-				'cy': (d:T,i:number) => yScale( dataToPoint(d).y )
-			});
+			dataSelection.transition().delay(50).duration(700)
+				.attr({
+					'r': 4,
+					'cx': (d:T,i:number) => xScale( dataToPoint(d).x ),
+					'cy': (d:T,i:number) => yScale( dataToPoint(d).y )
+				});
 			dataSelection.exit().remove();
 			this.setTooltip(dataSelection);
 		}
