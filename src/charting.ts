@@ -72,7 +72,7 @@ module charting {
 			points
 				.on("mouseover", function(d:dataPoint) {
 					d3.select(this).style("opacity",1);
-					var t: string = `x: ${d.x}, y: ${d.y}`;
+					var t = JSON.stringify(d);
 					tooltip.style("visibility","visible").text(t);
 				})
 				.on("mousemove", function(d:dataPoint) {
