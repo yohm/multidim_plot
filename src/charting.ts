@@ -43,13 +43,13 @@ module charting {
 				});
 		}
 		
-		public update(data: Array<dataPoint>) {
-			var minX = d3.min(data, (d:dataPoint)=>d.x );
-			var maxX = d3.max(data, (d:dataPoint)=>d.x );
+		public update<T>(data: Array<T>, dataToPoint: (d:T)=>dataPoint) {
+			var minX = d3.min(data, (d:T)=>dataToPoint(d).x );
+			var maxX = d3.max(data, (d:T)=>dataToPoint(d).x );
 			var xScale = this._xAxis.update(minX, maxX);
 			
-			var minY = d3.min(data, (d:dataPoint)=>d.y );
-			var maxY = d3.max(data, (d:dataPoint)=>d.y );
+			var minY = d3.min(data, (d:T)=>dataToPoint(d).y );
+			var maxY = d3.max(data, (d:T)=>dataToPoint(d).y );
 			var yScale = this._yAxis.update(minY, maxY);
 			
 			var dataSelection = this._dataGroup
@@ -60,8 +60,8 @@ module charting {
 				.classed('dat', true);
 			dataSelection.attr({
 				'r': 4,
-				'cx': (d: dataPoint,i:number) => xScale(d.x),
-				'cy': (d: dataPoint,i:number) => yScale(d.y)
+				'cx': (d:T,i:number) => xScale( dataToPoint(d).x ),
+				'cy': (d:T,i:number) => yScale( dataToPoint(d).y )
 			});
 			dataSelection.exit().remove();
 			this.setTooltip(dataSelection);

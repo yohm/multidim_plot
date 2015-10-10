@@ -9,12 +9,10 @@ class loader {
     constructor(container: any) {
         this._chart = new charting.chart('#test');
         d3.json('/test/test.json', (error:any, data: Array<any>) => {
-            var prepared = [];
-            data.forEach( dat => {
-                prepared.push({x: dat.x0, y: dat.x1});
-            });
-            console.log(prepared);
-            this._chart.update(prepared);
+            var dataToPoint: (d:any)=>charting.dataPoint = (d:any) =>  {
+                return {x: d.x0, y: d.x1};
+            }
+            this._chart.update<any>(data, dataToPoint);
         });
     }
 }
