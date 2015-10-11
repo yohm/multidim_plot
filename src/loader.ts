@@ -7,6 +7,7 @@ class loader {
     
     private _chart: charting.ClickableScatterPlot;
     private _data: Array<Object>;
+    private _pcPlot;
     
     constructor(spContainer: any, pcContainer: any) {
         this._chart = new charting.ClickableScatterPlot('#test');
@@ -16,6 +17,9 @@ class loader {
             this.addOption(keys);
             this.replot(keys[0], keys[1]);
             this.addPCPlot(pcContainer);
+            this._chart.setOnClickedCallback( (colors: number[]) => {
+                this._pcPlot.color( (d,i) => colors[i] ).render();
+            });
         });
     }
     
@@ -30,10 +34,12 @@ class loader {
         */
         var pc = d3.parcoords()(container)
             .data( this._data )
+            .color( (d,i) => '#00FF00' )
             .render()
             .ticks(3)
             .createAxes();
         pc.reorderable().brushMode("1D-axes").alphaOnBrushed(0.2);
+        this._pcPlot = pc;
     }
     
     private addOption(keys: Array<string>) {
