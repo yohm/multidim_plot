@@ -24,17 +24,9 @@ class loader {
     }
     
     private addPCPlot(container: any) {
-        /*
-        var keys = Object.keys(this._data[0]);
-        var dat_array = this._data.map( (dat:Object) => {
-            var values = keys.map( (key:string) => dat[key] )
-            return values;
-        });
-        console.log(keys, dat_array);
-        */
         var pc = d3.parcoords()(container)
             .data( this._data )
-            .color( (d,i) => '#00FF00' )
+            .color( (d,i) => '#000000' )
             .render()
             .ticks(3)
             .createAxes();
