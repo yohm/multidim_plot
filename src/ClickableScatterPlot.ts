@@ -1,4 +1,4 @@
-/// <reference path="./charting.ts"/>
+/// <reference path="./ScatterPlot.ts"/>
 /// <reference path="./dataPoint.d.ts"/>
 /// <reference path="./xAxis.ts"/>
 /// <reference path="./yAxis.ts"/>

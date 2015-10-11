@@ -1,6 +1,6 @@
 /// <reference path="../typings/d3/d3.d.ts"/>
+/// <reference path="./ScatterPlot.ts"/>
 /// <reference path="./ClickableScatterPlot.ts"/>
-/// <reference path="./charting.ts"/>
 /// <reference path="./dataPoint.d.ts"/>
 
 class loader {
