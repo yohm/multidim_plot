@@ -5,19 +5,19 @@
 
 class loader {
     
-    private _chart: charting.ClickableScatterPlot;
+    private _scatterPlot: charting.ClickableScatterPlot;
     private _data: Array<Object>;
     private _pcPlot;
     
     constructor(spContainer: any, pcContainer: any) {
-        this._chart = new charting.ClickableScatterPlot('#test');
+        this._scatterPlot = new charting.ClickableScatterPlot('#test');
         d3.json('/test/test.json', (error:any, data: Array<Object>) => {
             this._data = data;
             var keys: Array<string> = Object.keys( data[0] );
             this.addOption(keys);
             this.replot(keys[0], keys[1]);
             this.addPCPlot(pcContainer);
-            this._chart.setOnClickedCallback( (colors: number[]) => {
+            this._scatterPlot.setOnClickedCallback( (colors: number[]) => {
                 this._pcPlot.color( (d,i) => colors[i] ).render();
             });
         });
@@ -71,6 +71,6 @@ class loader {
         var dataToPoint: (d:Object)=>charting.dataPoint = (d:Object) => {
             return {x: d[xkey], y: d[ykey]};
         }
-        this._chart.update<Object>(this._data, dataToPoint);
+        this._scatterPlot.update<Object>(this._data, dataToPoint);
     }
 }
