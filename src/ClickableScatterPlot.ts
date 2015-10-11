@@ -8,7 +8,7 @@ module charting {
 		
 		private _selected: number;
 		private _colorScale: d3.scale.Linear<string,number>;
-		private _callbackOnClicked: (colors:Array<number>)=>void;
+		private _callbackOnClicked: (selectedIdx:number, colors:Array<number>)=>void;
 		
 		constructor(container: any) {
 			super(container);
@@ -27,7 +27,7 @@ module charting {
 			return points;
 		}
 		
-		public setOnClickedCallback(f: (colors:Array<number>)=>void ) {
+		public setOnClickedCallback(f: (i:number,colors:Array<number>)=>void ) {
 			this._callbackOnClicked = f;
 		}
 		
@@ -51,7 +51,7 @@ module charting {
 				'fill': (d:T,i:number)=> { return colors[i]; }
 			});
 			if( this._callbackOnClicked ) {
-				this._callbackOnClicked( colors );
+				this._callbackOnClicked( this._selected, colors );
 			}
 		}
 	}

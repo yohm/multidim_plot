@@ -17,8 +17,9 @@ class loader {
             this.addOption(keys);
             this.replot(keys[0], keys[1]);
             this.addPCPlot(pcContainer);
-            this._scatterPlot.setOnClickedCallback( (colors: number[]) => {
+            this._scatterPlot.setOnClickedCallback( (selected:number, colors: number[]) => {
                 this._pcPlot.color( (d,i) => colors[i] ).render();
+                var highlighted = this._pcPlot.highlight( [ this._data[selected] ] );
             });
         });
     }
