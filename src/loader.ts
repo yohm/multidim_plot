@@ -33,7 +33,7 @@ class loader {
             .render()
             .ticks(3)
             .createAxes();
-        pc.reorderable();
+        pc.reorderable().brushMode("1D-axes").alphaOnBrushed(0.2);
     }
     
     private addOption(keys: Array<string>) {
