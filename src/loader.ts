@@ -8,14 +8,31 @@ class loader {
     private _chart: charting.ClickableScatterPlot;
     private _data: Array<Object>;
     
-    constructor(container: any) {
+    constructor(spContainer: any, pcContainer: any) {
         this._chart = new charting.ClickableScatterPlot('#test');
         d3.json('/test/test.json', (error:any, data: Array<Object>) => {
             this._data = data;
             var keys: Array<string> = Object.keys( data[0] );
             this.addOption(keys);
             this.replot(keys[0], keys[1]);
+            this.addPCPlot(pcContainer);
         });
+    }
+    
+    private addPCPlot(container: any) {
+        /*
+        var keys = Object.keys(this._data[0]);
+        var dat_array = this._data.map( (dat:Object) => {
+            var values = keys.map( (key:string) => dat[key] )
+            return values;
+        });
+        console.log(keys, dat_array);
+        */
+        var pc = d3.parcoords()(container)
+            .data( this._data )
+            .render()
+            .ticks(3)
+            .createAxes();
     }
     
     private addOption(keys: Array<string>) {
