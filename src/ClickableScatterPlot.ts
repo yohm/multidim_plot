@@ -38,7 +38,7 @@ module charting {
 			var minD = d3.min(distances);
 			var maxD = d3.max(distances);
 			this._colorScale.domain([minD,maxD]);
-			var colors: Array<string> = distances.map( (v:number) => {
+			var colors: Array<number> = distances.map( (v:number) => {
 				return this._colorScale(v);
 			});
 			points.attr({
