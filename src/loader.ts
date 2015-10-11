@@ -33,6 +33,7 @@ class loader {
             .render()
             .ticks(3)
             .createAxes();
+        pc.reorderable();
     }
     
     private addOption(keys: Array<string>) {
